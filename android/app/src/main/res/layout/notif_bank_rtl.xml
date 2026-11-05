@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Our bank-message notification's text, drawn as images in the app's font
+     (a notification can't load an app's font file; see NotifText.kt). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right|center_vertical"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/notif_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd" />
+
+    <ImageView
+        android:id="@+id/notif_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd" />
+</LinearLayout>

@@ -1,0 +1,5 @@
+-keep class io.flutter.embedding.** { *; }
+-keep class io.flutter.plugins.** { *; }
+-keep class kotlin.Metadata { *; }
+-dontwarn kotlin.**
+-dontwarn kotlinx.**

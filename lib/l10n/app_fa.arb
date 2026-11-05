@@ -1,0 +1,493 @@
+{
+  "expensesTitle": "هزینه‌ها",
+  "addExpenseTitle": "افزودن هزینه",
+  "editExpenseTitle": "ویرایش هزینه",
+  "titleLabel": "عنوان",
+  "titleHint": "مثلاً: ناهار",
+  "amountLabel": "مبلغ",
+  "amountHintNumbersOnly": "هزینه",
+  "futureDateWarning": "این تاریخ در آینده است",
+  "pastDateWarning": "این تاریخ گذشته است",
+  "dateOrderDefault": "پیش‌فرض",
+  "dateOrderDmy": "روز/ماه/سال",
+  "dateOrderMdy": "ماه/روز/سال",
+  "dateOrderYmd": "سال/ماه/روز",
+  "pickDate": "انتخاب تاریخ",
+  "noteLabel": "یادداشت",
+  "optionalFieldHint": "این بخش اختیاری است",
+  "saveChanges": "ذخیره تغییرات",
+  "delete": "حذف",
+  "edit": "ویرایش",
+  "deleteExpenseTitle": "حذف هزینه",
+  "deleteExpenseConfirm": "آیا از حذف این هزینه مطمئن هستید؟",
+  "close": "بستن",
+  "selectRange": "انتخاب بازه",
+  "prevPeriod": "دوره قبل",
+  "nextPeriod": "دوره بعد",
+  "totalExpenses": "مجموع هزینه‌ها",
+  "noExpensesThisRange": "برای این بازه هزینه‌ای ثبت نشده",
+  "today": "امروز",
+  "manageCategories": "مدیریت",
+  "currencyToman": "تومان",
+  "currencyRial": "ریال",
+  "save": "ذخیره",
+  "cancel": "انصراف",
+  "settings": "تنظیمات",
+  "language": "زبان",
+  "persian": "فارسی",
+  "english": "انگلیسی",
+  "appearance": "ظاهر",
+  "themeMode": "حالت نمایش",
+  "system": "سیستم",
+  "light": "روشن",
+  "dark": "تیره",
+  "themeColors": "رنگ‌های تم",
+  "tapToPickColor": "برای انتخاب رنگ بزنید",
+  "data": "داده‌ها",
+  "backup": "پشتیبان",
+  "restore": "بازیابی",
+  "backupSavedIn": "پشتیبان در {folder} ذخیره شد",
+  "@backupSavedIn": {
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "backupFolderReset": "ذخیره در دانلود",
+  "backupNameReset": "نام پیش‌فرض",
+  "share": "اشتراک",
+  "backupSubject": "پشتیبان OpenFinances",
+  "backupError": "خطا در پشتیبان‌گیری: {error}",
+  "@backupError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "pickBackupFile": "انتخاب فایل پشتیبان",
+  "invalidFile": "فایل نامعتبر",
+  "invalidBackupFormat": "فرمت پشتیبان نامعتبر است",
+  "restoreDone": "بازیابی انجام شد",
+  "restoreChoiceMessage": "برنامه از قبل داده دارد. با داده‌های فعلی چه کنیم؟",
+  "restoreDeleteCurrent": "حذف داده فعلی",
+  "restoreBackUpThenDelete": "پشتیبان و حذف",
+  "restoreMerge": "ادغام داده‌ها",
+  "restoreDone": "بازیابی شد",
+  "restoreSkipped": "بازیابی شد؛ {count} ردیف خوانا نبود و کنار گذاشته شد",
+  "@restoreSkipped": {"placeholders": {"count": {"type": "String"}}},
+  "restoreSkippedOne": "بازیابی شد؛ {count} ردیف خوانا نبود و کنار گذاشته شد",
+  "@restoreSkippedOne": {"placeholders": {"count": {"type": "String"}}},
+  "restoreError": "خطا در بازیابی: {error}",
+  "@restoreError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dateAndRanges": "تاریخ و بازه‌ها",
+  "monthStartDay": "روز شروع ماه",
+  "decrease": "کاهش",
+  "increase": "افزایش",
+  "accountAndSecurity": "حساب و امنیت",
+  "biometricLock": "قفل بیومتریک",
+  "deviceNoBiometry": "این دستگاه از احراز هویت پشتیبانی نمی‌کند",
+  "biometricEnableReason": "برای فعال‌سازی قفل برنامه، احراز هویت کنید",
+  "biometricDisableReason": "برای غیرفعال‌سازی قفل برنامه، احراز هویت کنید",
+  "authFailed": "احراز هویت ناموفق بود",
+  "biomNotAvailable": "سنسور در دسترس نیست",
+  "biomNotEnrolled": "هیچ اثر انگشتی/چهره‌ای ثبت نشده است",
+  "passcodeNotSet": "قفل صفحه (PIN/Pattern) تنظیم نشده است",
+  "lockedOut": "تلاش‌های ناموفق زیاد؛ بعداً دوباره امتحان کنید",
+  "permanentlyLockedOut": "قفل دائمی؛ از PIN/Pattern استفاده کنید",
+  "authUnavailable": "احراز هویت در دسترس نیست",
+  "currencyUnit": "واحد پول",
+  "currency": "ارز",
+  "statistics": "آمار",
+  "totalThisPeriod": "مجموع این بازه",
+  "statsAtAGlance": "در یک نگاه",
+  "statsVsLastMonth": "نسبت به ماه قبل",
+  "statsVsAverage": "نسبت به میانگین ماهانه",
+  "statsMoreThanLastMonth": "بیشتر از ماه قبل",
+  "statsLessThanLastMonth": "کمتر از ماه قبل",
+  "statsSameAsLastMonth": "هم‌اندازه با ماه قبل",
+  "statsMoreThanAverage": "بیشتر از میانگین ماهانه",
+  "statsLessThanAverage": "کمتر از میانگین ماهانه",
+  "statsSameAsAverage": "هم‌اندازه با میانگین ماهانه",
+  "statsNotEnoughData": "داده کافی نیست",
+  "statsDailyAverage": "میانگین روزانه",
+  "sameDayAverage": "میانگین همین روز",
+  "spendingPace": "روند هزینه",
+  "chartKeepOne": "یکی از این‌ها باید روشن بماند",
+  "dailySpending": "هزینه روزانه",
+  "thisPeriodLine": "این بازه",
+  "lastPeriodLine": "بازه قبل",
+  "statsByCategory": "سهم دسته‌ها",
+  "noData": "بدون داده",
+  "tapToSee": "برای مشاهده\nبزنید",
+  "heatmapCalendar": "تقویم حرارتی",
+  "dayPreviewHint": "روزی را انتخاب کنید تا هزینه‌هایش را ببینید",
+  "dayTotal": "مجموع روز",
+  "toSep": "تا",
+  "costFor": "هزینه",
+  "overviewAllPeriods": "نمای کلی همه بازه‌ها",
+  "noDataToShow": "داده‌ای برای نمایش وجود ندارد",
+  "amountsShownInCurrency": "مبالغ به {currency} نمایش داده می‌شود",
+  "@amountsShownInCurrency": {
+    "description": "یادداشت پایین کارت که واحد نمایش مبالغ را می‌گوید.",
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "currencyUSD": "$",
+  "currencyEUR": "€",
+  "expenses": "هزینه‌ها",
+  "@expenses": {
+    "description": "برچسب تب پایین برای فهرست هزینه‌ها"
+  },
+  "support": "حمایت",
+  "@support": {
+    "description": "برچسب تب پایین برای صفحه حمایت/کمک"
+  },
+  "categories": "دسته‌بندی‌ها",
+  "newCategory": "دسته‌بندی جدید",
+  "noCategoriesYet": "هنوز دسته‌ای ساخته نشده",
+  "deleteCategory": "حذف دسته‌بندی",
+  "lastCategoryCantDelete": "دست‌کم یک دسته‌بندی باید بماند",
+  "enterCategoryName": "نام دسته‌بندی را وارد کنید",
+  "categoryNameLabel": "نام دسته‌بندی",
+  "pickIcon": "انتخاب آیکن",
+  "pickColor": "انتخاب رنگ",
+  "pickIconTitle": "انتخاب آیکن",
+  "searchIcons": "جستجو (نام انگلیسی آیکن یا نام گروه)",
+  "iconGroupShopping": "خرید",
+  "iconGroupMoney": "پول و بانک",
+  "iconGroupFood": "خوراکی",
+  "iconGroupTransport": "حمل‌ونقل",
+  "iconGroupHome": "خانه",
+  "iconGroupBills": "قبض‌ها",
+  "iconGroupTech": "دیجیتال",
+  "iconGroupHealth": "سلامت",
+  "iconGroupPersonal": "شخصی",
+  "iconGroupWork": "کار و آموزش",
+  "iconGroupLeisure": "تفریح و سفر",
+  "iconGroupOther": "سایر",
+  "editCategory": "ویرایش دسته‌بندی",
+  "colorPickerTitle": "انتخاب رنگ",
+  "colorPickerTabMain": "اصلی",
+  "colorPickerTabCustom": "دلخواه",
+  "select": "انتخاب",
+  "hexLabelExample": "HEX (مثلاً #1ABC9C)",
+  "invalidHexCode": "کد HEX نامعتبر است",
+  "calendarSystem": "تقویم",
+  "calendarJalali": "شمسی",
+  "calendarGregorian": "میلادی",
+  "income": "درآمد",
+  "@income": {
+    "description": "برچسب تب پایین برای فهرست درآمدها"
+  },
+  "incomeTitle": "درآمد",
+  "addIncomeTitle": "افزودن درآمد",
+  "editIncomeTitle": "ویرایش درآمد",
+  "incomeTitleHint": "مثلاً: حقوق",
+  "amountHintIncomeOnly": "درآمد",
+  "totalIncome": "مجموع درآمد",
+  "seeLastEntry": "رفتن به آخرین ثبت",
+  "noIncomeThisRange": "برای این بازه درآمدی ثبت نشده",
+  "deleteIncomeTitle": "حذف درآمد",
+  "deleteIncomeConfirm": "آیا از حذف این مورد درآمد مطمئن هستید؟",
+  "incomeCategories": "دسته‌بندی‌های درآمد",
+  "upcomingTitle": "پرداخت‌های پیش‌رو",
+  "upcomingTotal": "پیش‌رو",
+  "addUpcomingTitle": "افزودن پرداخت پیش‌رو",
+  "editUpcomingTitle": "ویرایش پرداخت پیش‌رو",
+  "rescheduleUpcomingTitle": "زمان‌بندی پرداخت بعدی",
+  "upcomingEmpty": "پرداختی در پیش نیست",
+  "upcomingDueSection": "پرداخت‌نشده",
+  "upcomingPaidSection": "پرداخت‌شده",
+  "upcomingNothingPaid": "هنوز چیزی پرداخت نشده",
+  "upcomingTitleHint": "مثلاً قبض اینترنت",
+  "dueDateLabel": "سررسید",
+  "dueOn": "سررسید {date}",
+  "@dueOn": {"placeholders": {"date": {"type": "String"}}},
+  "markPaid": "پرداخت شد",
+  "upcomingPaidOn": "پرداخت {date}",
+  "@upcomingPaidOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "payAndReschedule": "پرداخت و تمدید",
+  "dueToday": "امروز",
+  "dueTomorrow": "فردا",
+  "dueInDays": "{days} روز مانده",
+  "dueInOneDay": "{days} روز مانده",
+  "@dueInOneDay": {"placeholders": {"days": {"type": "String"}}},
+  "@dueInDays": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "overdueDays": "{days} روز گذشته",
+  "@overdueDays": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "overdueOneDay": "{days} روز گذشته",
+  "@overdueOneDay": {"placeholders": {"days": {"type": "String"}}},
+  "deleteUpcomingTitle": "حذف پرداخت پیش‌رو",
+  "deleteUpcomingConfirm": "این مورد از پرداخت‌های پیش‌رو حذف شود؟ هزینه‌ای ثبت نمی‌شود",
+  "removeFromHistory": "حذف از تاریخچه",
+  "addUpcomingButton": "افزودن پرداخت",
+  "expenseShort": "هزینه",
+  "spentShort": "هزینه",
+  "@spentShort": {"description": "Expense in a row of four pills (shorter in English)"},
+  "historyTab": "تاریخچه",
+  "incomingTab": "پیش‌رو",
+  "allShort": "همه",
+  "noMatch": "موردی پیدا نشد",
+  "@noMatch": {
+    "description": "Shown in a suggestion row when nothing matches what was typed."
+  },
+  "budget": "بودجه",
+  "editBudget": "ویرایش بودجه",
+  "addBudget": "افزودن بودجه",
+  "categoryBudget": "بودجه دسته",
+  "sortCustom": "سفارشی",
+  "assignBudgetFirst": "ابتدا بودجه تعیین کنید",
+  "fullData": "داده کامل",
+  "expensesOnly": "فقط هزینه‌ها",
+  "dateLabel": "تاریخ",
+  "calendarJump": "رفتن به یک روز",
+  "calendarFull": "کل دوره",
+  "calendarWeek": "یک هفته",
+  "todayWithDate": "امروز {date}",
+  "@todayWithDate": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "categorySpendPerPeriod": "هزینه‌های دسته در هر بازه",
+  "calculator": "ماشین حساب",
+  "done": "تأیید",
+  "failedToSaveSettings": "خطا در ذخیره تنظیمات",
+  "unlockReason": "برای باز کردن برنامه احراز هویت کنید",
+  "bankBlu": "بلو",
+  "bankPasargad": "پاسارگاد",
+  "generalCategory": "عمومی",
+  "@generalCategory": {
+    "description": "Name of the default category created on first run."
+  },
+  "debtsTab": "بدهی",
+  "smsTab": "پیامک",
+  "debtIOwe": "بدهی من",
+  "debtOwedToMe": "طلب من",
+  "debtsEmpty": "بدهی یا طلبی ثبت نشده",
+  "addDebtButton": "افزودن بدهی یا طلب",
+  "debtPersonHint": "نام شخص",
+  "debtStartLabel": "شروع",
+  "debtSettled": "تسویه شد",
+  "deleteDebtTitle": "حذف بدهی",
+  "deleteDebtConfirm": "این مورد و پرداخت‌هایش حذف شوند؟ هزینه‌ها و درآمدهایی که ثبت شده‌اند می‌مانند",
+  "debtLedgerTitleOwe": "بازپرداخت به {person}",
+  "@debtLedgerTitleOwe": {
+    "placeholders": {
+      "person": {
+        "type": "String"
+      }
+    }
+  },
+  "debtLedgerTitleOwed": "دریافت از {person}",
+  "@debtLedgerTitleOwed": {
+    "placeholders": {
+      "person": {
+        "type": "String"
+      }
+    }
+  },
+  "smsTabExplain": "برای فهرست شدن پیامک‌های بانکی در اینجا، اجازه خواندن اعلان‌ها را بدهید. فقط پیامک‌های بانکی نگه داشته می‌شوند و چیزی از گوشی خارج نمی‌شود",
+  "smsTabEmpty": "پیامک‌های بانکی از این به بعد، با رسیدن، اینجا می‌آیند",
+  "smsAdded": "ثبت شد",
+  "smsOpen": "باز کردن",
+  "smsNewSection": "تازه",
+  "smsSeenSection": "دیده‌شده",
+  "smsNothingNew": "پیام تازه‌ای نیست",
+  "smsNothingSeen": "هنوز پیامی دیده نشده",
+  "smsMarkSeen": "دیده شد",
+  "smsMarkUnseen": "دیده نشده",
+  "allowNotificationAccess": "اجازه خواندن اعلان‌ها",
+  "readBankNotifications": "خواندن اعلان‌ها",
+  "bankMessageFallback": "پیامک بانکی",
+  "addAction": "ثبت",
+  "notifyBankMessages": "نمایش اعلان‌ها",
+  "ignoredTitles": "نادیده‌ها",
+  "ignoredTitlesEmpty": "عنوانی نادیده گرفته نشده. برای نادیده گرفتن، روی پیشنهاد عنوان انگشت نگه دارید",
+  "titleIgnored": "«{title}» دیگر پیشنهاد نمی‌شود",
+  "@titleIgnored": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "undo": "بازگردانی",
+  "suggestTitlesFromCategory": "پیشنهاد عنوان‌ها",
+  "peopleTab": "اشخاص",
+  "debtShort": "بدهی",
+  "creditShort": "طلب",
+  "titlesTab": "عناوین",
+  "payOnly": "پرداخت",
+  "payAndRecord": "پرداخت و ثبت",
+  "recordPaid": "ثبت",
+  "receiveOnly": "دریافت",
+  "receiveAndRecord": "دریافت و ثبت",
+  "debtRecordPaid": "ثبت",
+  "nextDue": "سررسید بعدی: {when}",
+  "@nextDue": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "overdueCount": "{count} مورد عقب‌افتاده",
+  "@overdueCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "nothingDue": "سررسیدی نمانده",
+  "notifReadMissing": "این قابلیت بدون اجازه خواندن اعلان‌ها کار نمی‌کند",
+  "needsPermission": "بدون اجازه نمی‌شود این را روشن کرد",
+  "noTitlesToIgnore": "عنوانی برای نادیده گرفتن نیست",
+  "noPeopleToIgnore": "شخصی برای نادیده گرفتن نیست",
+  "sortBudget": "بودجه",
+  "sortSpent": "هزینه",
+  "sortRemaining": "مانده",
+  "sortAscending": "صعودی",
+  "sortDescending": "نزولی",
+  "budgetsSection": "به تفکیک دسته",
+  "noBudgetGroup": "بدون بودجه",
+  "formatUnknown": "قالب ناشناخته",
+  "defineFormat": "تعریف قالب",
+  "ignoreFormat": "نادیده گرفتن قالب",
+  "ignoreSender": "نادیده گرفتن فرستنده",
+  "pickAmountHint": "عدد مبلغ را در پیامک انتخاب کنید",
+  "saveFormat": "ثبت قالب",
+  "senderIgnored": "پیامک‌های «{sender}» دیگر خوانده نمی‌شوند",
+  "@senderIgnored": {
+    "placeholders": {
+      "sender": {
+        "type": "String"
+      }
+    }
+  },
+  "sectionPersonalization": "شخصی‌سازی",
+  "sectionTabsAccess": "تب‌ها و دسترسی",
+  "sectionData": "داده‌ها",
+  "historyAlwaysOn": "تاریخچه همیشه روشن است",
+  "smsFormats": "قالب‌های پیامک",
+  "formatsEmpty": "هنوز قالبی تعریف نشده",
+  "formatBySign": "از روی علامت",
+  "formatNoExample": "بدون نمونه",
+  "deleteFormatTitle": "حذف قالب",
+  "deleteFormatConfirm": "پیامک‌های این قالب دوباره ناشناخته می‌شوند",
+  "stopIgnoring": "بازگرداندن",
+  "smsNoneHere": "پیامکی اینجا نیست",
+  "ignoredOne": "نادیده",
+  "smsFirst": "اول تب پیامک را روشن کنید",
+  "appMotto": "مشکلی که شناسایی نشود هرگز حل نمی‌شود",
+  "notifyOffWarning": "برای بهترین استفاده از این قابلیت، اعلان‌ها را روشن کنید",
+  "sectionHistory": "تاریخچه",
+  "keepFolds": "حفظ بازوبسته",
+  "keepPlace": "حفظ جایگاه",
+  "keepEntries": "حفظ ورودی‌ها",
+  "couldNotOpen": "باز نشد",
+  "showSuggestions": "نمایش پیشنهادها",
+  "backAgainToExit": "برای خروج دوباره بازگشت را بزنید",
+  "formatName": "نام قالب",
+  "showTips": "آموزش",
+  "neverWarn": "هشدار نده",
+  "tipWelcome": "به OpenFinances خوش آمدید! این صفحه اصلی شماست. در تنظیمات می‌توانید زبانه‌های بیشتری اضافه کنید یا آموزش را خاموش کنید",
+  "tipPeriod": "داده‌ها برای هر ماه نمایش داده می‌شوند. برای تغییر ماه، این کادر یا فلش‌های کنارش را بزنید",
+  "tipCards": "یک کارت را بزنید تا فقط همان نوع نشان داده شود",
+  "tipAdd": "با این دکمه یک مورد اضافه کنید. آنچه اضافه می‌کنید به صفحه‌ای که در آن هستید بستگی دارد",
+  "tipTiles": "یک ردیف را بزنید یا بکشید تا با آن کار کنید",
+  "tipChips": "یک دسته را بزنید تا فقط ردیف‌های همان را ببینید",
+  "tipBudget": "برای دسته‌هایتان بودجه بگذارید تا حسابشان را داشته باشید",
+  "tipSections": "عنوان بخش را بزنید تا جمع شود، دوباره بزنید تا باز شود",
+  "setupMore": "گزینه‌های بیشتر",
+  "setupContinue": "ادامه",
+  "privacyRead": "{policy} را خوانده‌ام",
+  "@privacyRead": {
+    "placeholders": {
+      "policy": {
+        "type": "String"
+      }
+    }
+  },
+  "privacyPolicy": "حریم خصوصی",
+  "privacyTitle": "حریم خصوصی",
+  "privacyOfflineTitle": "چیزی از گوشی شما بیرون نمی‌رود",
+  "privacyOffline": "OpenFinances حساب کاربری، سرور، تبلیغات و آمارگیری ندارد. حتی اجازه دسترسی به اینترنت ندارد؛ پس اندروید نمی‌گذارد آنلاین شود",
+  "privacyDataTitle": "داده‌های شما",
+  "privacyData": "خرج‌ها، درآمدها، بودجه‌ها، بدهی‌ها و تنظیمات شما فقط در حافظه برنامه روی همین گوشی می‌مانند. با حذف برنامه پاک می‌شوند",
+  "privacyBackupsTitle": "پشتیبان",
+  "privacyBackups": "پشتیبان فقط وقتی ساخته می‌شود که خودتان بخواهید: فایلی که هر جا بخواهید ذخیره می‌شود. اینکه از آنجا به کجا برود با خودتان است",
+  "privacyBankTitle": "پیامک‌های بانکی و دسترسی به اعلان‌ها",
+  "privacyBank": "تا خودتان روشنش نکنید خاموش است. با روشن کردنش، اندروید از شما اجازه دسترسی به اعلان‌ها را می‌خواهد تا برنامه اعلان‌هایی را که برنامه پیامک برای پیامک‌های تازه نشان می‌دهد بخواند و ثبت تراکنش‌های بانکی را پیشنهاد کند. فقط پیامک‌هایی نگه داشته می‌شوند که تراکنش بانکی شناخته شوند؛ بقیه اعلان‌ها نادیده گرفته می‌شوند. هیچ چیز به جایی فرستاده نمی‌شود",
+  "privacyUpdatesTitle": "بررسی به‌روزرسانی",
+  "privacyUpdates": "فقط وقتی در بخش درباره «بررسی به‌روزرسانی» را بزنید، گوگل پلی (نه این برنامه) نسخه تازه‌تر را پیدا می‌کند؛ گوگل نسخه برنامه و مشخصات دستگاه را دریافت می‌کند",
+  "privacyLockTitle": "قفل اثر انگشت",
+  "privacyLock": "اثر انگشت را خود اندروید بررسی می‌کند؛ برنامه هرگز آن را نمی‌بیند",
+  "privacyOk": "متوجه شدم",
+  "payHint": "بازپرداخت",
+  "payRemainingLabel": "باقی‌مانده",
+  "repayments": "بازپرداخت‌ها",
+  "debtBelowPaid": "تا الان {amount} بازپرداخت شده؛ بدهی نمی‌تواند کمتر از آن باشد. برای کمتر کردنش اول بازپرداخت‌ها را حذف کنید",
+  "@debtBelowPaid": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "debtStartAfterRepayment": "یک بازپرداخت در {date} ثبت شده؛ شروع بدهی نمی‌تواند بعد از آن باشد",
+  "@debtStartAfterRepayment": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "debtSideLocked": "این بدهی بازپرداخت دارد؛ طرفش را نمی‌شود عوض کرد",
+  "deleteRepaymentTitle": "حذف بازپرداخت",
+  "deleteRepaymentConfirm": "این بازپرداخت و ثبتی که در تاریخچه گذاشته حذف می‌شوند",
+  "repaymentDeleted": "بازپرداخت حذف شد",
+  "debtsOngoingSection": "در جریان",
+  "debtsPaidSection": "تسویه‌شده",
+  "debtsNothingOngoing": "چیزی در جریان نیست",
+  "debtsNothingPaid": "هنوز چیزی تسویه نشده",
+  "repaymentLabel": "بازپرداخت",
+  "deleteCategoryMoveTo": "این دسته‌بندی حذف می‌شود و ثبت‌هایش به دسته‌بندی‌ای که پایین انتخاب کنید منتقل می‌شوند",
+  "quickZeros": "دکمه 000",
+  "haptics": "لرزش",
+  "debtPaidLabel": "پرداخت‌شده",
+  "debtDueBy": "تا {date}",
+  "@debtDueBy": {"placeholders": {"date": {"type": "String"}}}
+}

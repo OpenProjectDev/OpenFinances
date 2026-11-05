@@ -1,0 +1,167 @@
+name: openfinances
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.12+16
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations: # ✅ comes from the Flutter SDK
+    sdk: flutter
+
+  sqflite: ^2.4.4+2
+  path: ^1.9.1
+  path_provider: ^2.1.6
+  uuid: ^4.6.0
+  intl: ^0.20.3
+  shamsi_date: ^1.1.1
+  persian_datetime_picker: ^3.2.0
+  provider: ^6.1.5+1
+  shared_preferences: ^2.5.6
+  local_auth: ^3.0.2
+  file_picker: ^13.1.0
+  share_plus: ^13.3.1
+  excel: ^4.0.6
+  in_app_review: ^2.0.12
+  flutter_phoenix: ^1.1.1
+  url_launcher: ^6.3.3
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  # Pinned: 2.4.6+ needs archive ^4, but excel (latest 4.0.6) needs archive ^3.
+  # Its Android module targets compileSdk 31; android/build.gradle.kts lifts it.
+  flutter_native_splash: 2.4.4
+  sqflite_common_ffi: ^2.4.4
+
+flutter:
+  uses-material-design: true
+  generate: true   # enables gen-l10n on build
+
+  # If you have icons/fonts/images, add them here
+  assets:
+    - assets/fonts/
+    # The app's license and the fonts' (shown on Settings > About >
+    # Open-source licenses).
+    - LICENSE
+    - assets/fonts/manrope/OFL.txt
+    - assets/fonts/shabnam/LICENSE.txt
+    - assets/fonts/digits/Vazirmatn-OFL.txt
+    - assets/nav/
+    - assets/icons/
+
+  fonts:
+    # Persian app font: Shabnam (SIL Open Font License 1.1,
+    # assets/fonts/shabnam/LICENSE.txt), by tool/make_fonts.py. Light is the
+    # default weight (Flutter's w400 too; the owner's design agent,
+    # 2026-10-28).
+    - family: Shabnam
+      fonts:
+        - asset: assets/fonts/shabnam/Shabnam-Light.ttf
+          weight: 300
+        - asset: assets/fonts/shabnam/Shabnam-Light.ttf
+          weight: 400
+        - asset: assets/fonts/shabnam/Shabnam-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/shabnam/Shabnam-Bold.ttf
+          weight: 600
+        - asset: assets/fonts/shabnam/Shabnam-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/shabnam/Shabnam-Bold.ttf
+          weight: 800
+        - asset: assets/fonts/shabnam/Shabnam-Bold.ttf
+          weight: 900
+    # English app font: Manrope (SIL Open Font License 1.1,
+    # assets/fonts/manrope/OFL.txt), cut by tool/make_manrope.py at its own
+    # weights: each Flutter weight is Manrope's of the same number (w900:
+    # 800, its heaviest), but w400, the default, is its Light.
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/manrope/Manrope-300.ttf
+          weight: 300
+        - asset: assets/fonts/manrope/Manrope-300.ttf
+          weight: 400
+        - asset: assets/fonts/manrope/Manrope-500.ttf
+          weight: 500
+        - asset: assets/fonts/manrope/Manrope-600.ttf
+          weight: 600
+        - asset: assets/fonts/manrope/Manrope-700.ttf
+          weight: 700
+        - asset: assets/fonts/manrope/Manrope-800.ttf
+          weight: 800
+        - asset: assets/fonts/manrope/Manrope-800.ttf
+          weight: 900
+    # The digit fonts: only digits and the separators next to them (so they
+    # go FIRST in a text's font list), tabular figures baked in, each one
+    # step lighter than the letters beside them (a weight's digits are at
+    # its number - 100; w400's, ExtraLight 200). Made by tool/make_fonts.py;
+    # licenses: assets/fonts/digits/*-OFL.txt (Manrope, Vazirmatn by Saber
+    # Rastikerdar).
+    - family: ManropeNum
+      fonts:
+        - asset: assets/fonts/digits/ManropeNum-200.ttf
+          weight: 300
+        - asset: assets/fonts/digits/ManropeNum-200.ttf
+          weight: 400
+        - asset: assets/fonts/digits/ManropeNum-300.ttf
+          weight: 500
+        - asset: assets/fonts/digits/ManropeNum-400.ttf
+          weight: 600
+        - asset: assets/fonts/digits/ManropeNum-500.ttf
+          weight: 700
+        - asset: assets/fonts/digits/ManropeNum-600.ttf
+          weight: 800
+        - asset: assets/fonts/digits/ManropeNum-700.ttf
+          weight: 900
+    - family: VazirNum
+      fonts:
+        - asset: assets/fonts/digits/VazirNum-200.ttf
+          weight: 300
+        - asset: assets/fonts/digits/VazirNum-200.ttf
+          weight: 400
+        - asset: assets/fonts/digits/VazirNum-300.ttf
+          weight: 500
+        - asset: assets/fonts/digits/VazirNum-400.ttf
+          weight: 600
+        - asset: assets/fonts/digits/VazirNum-500.ttf
+          weight: 700
+        - asset: assets/fonts/digits/VazirNum-600.ttf
+          weight: 800
+        - asset: assets/fonts/digits/VazirNum-700.ttf
+          weight: 900
+    # Icons: Flaticon UIcons (free with credit, Settings > About;
+    # assets/fonts/uicons/LICENSE.txt), made by tool/gen_uicons.py.
+    - family: UIconsSR
+      fonts:
+        - asset: assets/fonts/uicons/uicons-solid-rounded.ttf
+    - family: UIconsBR
+      fonts:
+        - asset: assets/fonts/uicons/uicons-bold-rounded.ttf
+    - family: UIconsBrands
+      fonts:
+        - asset: assets/fonts/uicons/uicons-brands.ttf
+
+flutter_native_splash:
+  android: true
+  ios: false
+  web: false
+
+  # The brand's splash: the lockup (mark + "OpenFinances", rendered from the
+  # app's own BrandLockup by tool/make_brand_icons.py) on the app's dark
+  # background, in both themes (no light splash). The app's branding screen
+  # (lib/app/branding_screen.dart) starts as the same picture.
+  color: "#1E1F21"
+  color_dark: "#1E1F21"
+  image: assets/icon/splash.png
+  image_dark: assets/icon/splash.png
+
+  # Android 12+: the lockup inside the 192 dp circle the system keeps.
+  android_12:
+    color: "#1E1F21"
+    color_dark: "#1E1F21"
+    image: assets/icon/splash.png
+    image_dark: assets/icon/splash.png
