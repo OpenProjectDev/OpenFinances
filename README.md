@@ -8,6 +8,8 @@ A personal finance app for Android that stays on your phone. It has no internet 
 - Your data moves between phones as JSON or Excel backups that you keep
 - Persian and English, with Jalali and Gregorian calendars
 
+<img src="store/en/01-overview.png" width="200"> <img src="store/en/03-categories.png" width="200"> <img src="store/en/06-budget.png" width="200"> <img src="store/en/08-debts.png" width="200">
+
 ## We're looking for testers
 
 OpenFinances is in closed testing on Google Play, and it needs testers before it can launch. If you have an Android phone and a Google account, you can help:
