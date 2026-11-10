@@ -14,10 +14,16 @@
         android:largeScreens="false"
         android:xlargeScreens="false" />
 
+    <!-- Android's own backup: off unless Settings > Data's "Encrypted
+         Android backup" is on; AppBackupAgent decides each pass (to Google
+         only end-to-end encrypted, to a new phone only with it on). -->
     <application
         android:name="${applicationName}"
         android:label="OpenFinances"
         android:icon="@mipmap/ic_launcher"
+        android:allowBackup="true"
+        android:backupAgent=".AppBackupAgent"
+        android:fullBackupOnly="true"
         android:usesCleartextTraffic="true">
 
         <!-- Main Flutter activity -->

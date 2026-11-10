@@ -58,6 +58,10 @@ class SettingsProvider extends ChangeNotifier {
   // A due payment's sheet: paying it also records an expense (its Record
   // box; kept as last left).
   static const _kRecordDuePaid = 'recordDuePaid';
+
+  /// Read natively too, by the backup agent (AppBackupAgent.kt, as
+  /// `flutter.androidBackup` in FlutterSharedPreferences): keep the name.
+  static const kAndroidBackup = 'androidBackup';
   // The backup box's last choices (null: none made yet).
   static const _kBackupFull = 'backupFull';
   static const _kBackupExcel = 'backupExcel';
@@ -188,8 +192,14 @@ class SettingsProvider extends ChangeNotifier {
   bool? _quickZeros;
 
   /// A "000" button by an amount field's eraser once something is typed
-  /// (the owner, 2026-10-26). Unset: on in Persian, off in English.
-  bool get quickZeros => _quickZeros ?? _locale.languageCode == 'fa';
+  /// (the owner, 2026-10-26). Unset: on for toman and rial, off for dollars
+  /// and euros, whatever the language (developer, 2026-11-10).
+  bool get quickZeros => _quickZeros ?? zerosByDefault(_currencyCode);
+
+  /// Whether [currency] has the "000" button on by default: amounts in toman
+  /// and rial run to thousands and more.
+  static bool zerosByDefault(String currency) =>
+      currency == 'IRT' || currency == 'IRR';
 
   /// Felt touches ([Haptics]): on by default (the owner, 2026-11-01).
   bool _hapticsOn = true;
@@ -200,6 +210,19 @@ class SettingsProvider extends ChangeNotifier {
     notifyListeners();
     final sp = await SharedPreferences.getInstance();
     await sp.setBool(_kHaptics, v);
+  }
+
+  /// Android's own backup of the app's data (developer, 2026-11-08): off by
+  /// default. On, to Google only when Android encrypts it end to end; off,
+  /// nor a phone-to-phone transfer. AppBackupAgent.kt decides.
+  bool _androidBackup = false;
+  bool get androidBackup => _androidBackup;
+
+  Future<void> setAndroidBackup(bool v) async {
+    _androidBackup = v;
+    notifyListeners();
+    final sp = await SharedPreferences.getInstance();
+    await sp.setBool(kAndroidBackup, v);
   }
 
   Future<void> setQuickZeros(bool v) async {
@@ -652,6 +675,7 @@ class SettingsProvider extends ChangeNotifier {
     _quickZeros = zeros is bool ? zeros : null;
     final haptics = sp.get(_kHaptics);
     _hapticsOn = haptics is bool ? haptics : true;
+    _androidBackup = sp.get(kAndroidBackup) == true; // default: off
     _rememberSections = sp.get(_kRememberSections) != false; // default: on
     _rememberScroll = sp.get(_kRememberScroll) != false; // default: on
     _rememberEntries = sp.get(_kRememberEntries) != false; // default: on
@@ -862,10 +886,16 @@ class SettingsProvider extends ChangeNotifier {
   }
 
   Future<void> setCurrency(String code) async {
+    // A currency with another "000" default takes that default: the button
+    // follows the currency (toman to euro turns it off), not an older choice
+    // made for the other kind (developer, 2026-11-10).
+    final reset = zerosByDefault(code) != zerosByDefault(_currencyCode);
     _currencyCode = code;
+    if (reset) _quickZeros = null;
     notifyListeners();
     final sp = await SharedPreferences.getInstance();
     await sp.setString(_kCurrency, code);
+    if (reset) await sp.remove(_kQuickZeros);
   }
 
   Future<void> setBiometricEnabled(bool v) async {

@@ -7,6 +7,41 @@ typedef ChangeLogEntry = ({String version, String date, List<String> changes});
 
 const List<ChangeLogEntry> kChangeLog = [
   (
+    version: '1.0.16+20',
+    date: '2026-11-10',
+    changes: [
+      'Settings: Android backup is a checkbox, Allow Android to back up my '
+          'data, with an info button that explains it',
+      'The 000 button is on by default for toman and rial, off for dollars '
+          'and euros',
+    ],
+  ),
+  (
+    version: '1.0.15+19',
+    date: '2026-11-08',
+    changes: [
+      'Android backup to your Google account is now off unless you turn on '
+          'Encrypted Android backup in Settings, under Data',
+      'The privacy text explains Android backup and the Play rating prompt',
+      'New website address',
+    ],
+  ),
+  (
+    version: '1.0.14+18',
+    date: '2026-11-06',
+    changes: [
+      'Fingerprint lock: leaving the app while it asks, then coming back, '
+          'asks again by itself',
+      'Picking a suggested title moves on to the amount',
+      'Debts: the due date button reads better in Persian',
+    ],
+  ),
+  (
+    version: '1.0.13+17',
+    date: '2026-11-05',
+    changes: ['A smaller download, with everything working as before'],
+  ),
+  (
     version: '1.0.12+16',
     date: '2026-11-04',
     changes: [

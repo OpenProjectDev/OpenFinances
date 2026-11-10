@@ -51,6 +51,7 @@ openfinances-sms-samples-*.json
 *SECRET*
 .env
 .env.*
+*.env
 *.key
 *.pem
 

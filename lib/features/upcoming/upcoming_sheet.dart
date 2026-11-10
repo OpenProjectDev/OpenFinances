@@ -1128,11 +1128,12 @@ class _UpcomingEditorState extends State<_UpcomingEditor> {
       );
 
   /// A title chip: the title, and the category it had last time (if it's
-  /// still there). Never the amount (the owner, 2026-10-25: suggested
-  /// amounts only had to be erased).
+  /// still there), then on to the amount. Never the amount's value (the
+  /// owner, 2026-10-25: suggested amounts only had to be erased).
   void _pickTitle(String title, EntrySuggestions sugg) {
     _setText(_title, title);
     _titleQuery.value = '';
+    _amountNode.requestFocus();
     final cat = sugg.categoryFor(title);
     final known =
         cat != null &&

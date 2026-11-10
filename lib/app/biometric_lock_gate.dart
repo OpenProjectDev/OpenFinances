@@ -9,7 +9,8 @@ import 'package:provider/provider.dart';
 import 'package:openfinances/data/settings_provider.dart';
 
 /// When locked, shows only a heavy blur + scrim and triggers the system sheet.
-/// Tap anywhere to retry if the user cancelled.
+/// Tap anywhere to retry if the user cancelled; leaving and coming back
+/// asks again.
 class BiometricLockGate extends StatefulWidget {
   const BiometricLockGate({
     super.key,
@@ -64,6 +65,13 @@ class _BiometricLockGateState extends State<BiometricLockGate>
   DateTime? _lastUnlockAt; // for grace period
   DateTime? _leftAt; // when the app was last left (not for the auth sheet)
 
+  /// The app was left (Home, Recents) while locked. Android 10+ cancels
+  /// an open prompt then as if the user cancelled it, so local_auth's
+  /// sticky option never shows it again: coming back asks again instead
+  /// of leaving a blur that needs a tap.
+  bool _leftWhileLocked = false;
+  DateTime? _resumedAt; // the last coming back, while a prompt was pending
+
   bool _withinGrace(DateTime? ts) {
     if (ts == null) return false;
     return DateTime.now().difference(ts) < widget.gracePeriod;
@@ -90,6 +98,7 @@ class _BiometricLockGateState extends State<BiometricLockGate>
   void _unlockedElsewhere() {
     final at = BiometricLockGate._unlockedAt.value;
     if (!mounted || !_locked || !_withinGrace(at)) return;
+    _leftWhileLocked = false;
     setState(() {
       _locked = false;
       _lastUnlockAt = at;
@@ -125,6 +134,10 @@ class _BiometricLockGateState extends State<BiometricLockGate>
     if (state == AppLifecycleState.paused ||
         state == AppLifecycleState.inactive ||
         state == AppLifecycleState.hidden) {
+      // Not inactive: the prompt itself takes the focus, which is inactive.
+      if (_locked && state != AppLifecycleState.inactive) {
+        _leftWhileLocked = true;
+      }
       if (!_authInProgress) {
         // Don't count the auth sheet; the first of these events is the
         // moment the user left.
@@ -144,6 +157,15 @@ class _BiometricLockGateState extends State<BiometricLockGate>
         }
       }
       _wasInBackground = false;
+      if (_leftWhileLocked && _locked) {
+        if (_authInProgress) {
+          // Its answer may still be on the way: see _retryAfterLeaving.
+          _resumedAt = DateTime.now();
+        } else {
+          _leftWhileLocked = false;
+          unawaited(_authenticate());
+        }
+      }
     }
   }
 
@@ -171,12 +193,37 @@ class _BiometricLockGateState extends State<BiometricLockGate>
         _authInProgress = false;
         if (ok) _lastUnlockAt = DateTime.now();
       });
+      if (ok) {
+        _leftWhileLocked = false;
+        _resumedAt = null;
+      } else {
+        _retryAfterLeaving();
+      }
     } catch (_) {
       BiometricLockGate._promptUp = false;
       if (!mounted) return;
       setState(() => _authInProgress = false); // remain locked; tap to retry
+      _retryAfterLeaving();
     }
   }
+
+  /// A prompt failed. Cancelled by leaving the app: still away, coming back
+  /// asks again (didChangeAppLifecycleState); already back, ask now. A
+  /// cancel well after coming back is the user's: the blur stays, tap to
+  /// retry.
+  void _retryAfterLeaving() {
+    final back =
+        WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed;
+    if (!_leftWhileLocked || !back) return;
+    _leftWhileLocked = false;
+    final at = _resumedAt;
+    _resumedAt = null;
+    if (at != null && DateTime.now().difference(at) < _lateAnswer) {
+      unawaited(_authenticate());
+    }
+  }
+
+  static const _lateAnswer = Duration(seconds: 2);
 
   @override
   void didUpdateWidget(covariant BiometricLockGate oldWidget) {

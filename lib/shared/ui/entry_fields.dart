@@ -313,11 +313,6 @@ ButtonStyle saveButtonStyle(
   );
 }
 
-/// A date button's padding ([height] tall): its calendar mark ([icon]
-/// px) as far from the start as from the top and bottom, and its date
-/// ([fontSize] px digits) as far from the end, measured by their ink (the
-/// mark's image is 84% as tall as drawn, 2% in from its sides; digits stand
-/// about .7 em tall).
 /// A date in a field: before it a calendar, or, when there's a date to undo,
 /// what undoes it in the app's red, in the calendar's place: the reset when the
 /// field can't be empty ([reset]: back to today), the eraser when it can

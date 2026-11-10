@@ -1384,7 +1384,9 @@ class _DebtEditorState extends State<_DebtEditor> {
               Expanded(
                 child: SheetDateField(
                   style: _fieldButtonStyle(scheme),
-                  label: _due == null ? l.dueDateLabel : l.dueOn(date(_due!)),
+                  // «تاریخ سررسید», not «سررسید» alone: with no tall letter, that
+                  // sat low in the chip (InkText centers on the font's band).
+                  label: _due == null ? l.dueDatePick : l.dueOn(date(_due!)),
                   clear: _due == null
                       ? null
                       : () => setState(() => _due = null),

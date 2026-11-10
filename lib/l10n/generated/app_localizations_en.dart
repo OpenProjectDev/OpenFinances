@@ -540,6 +540,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dueDateLabel => 'Due date';
 
   @override
+  String get dueDatePick => 'Due date';
+
+  @override
   String dueOn(String date) {
     return 'Due $date';
   }
@@ -1023,14 +1026,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyData =>
-      'Your expenses, income, budgets, debts and settings stay only in the app\'s storage on this phone. Uninstalling the app deletes them';
+      'Your expenses, income, budgets, debts and settings stay only in the app\'s storage on this phone, unless you turn on Android backup. Uninstalling the app deletes them';
 
   @override
   String get privacyBackupsTitle => 'Backups';
 
   @override
   String get privacyBackups =>
-      'A backup is made only when you ask for one: a file saved where you choose. Where it goes from there is up to you';
+      'A backup is made only when you ask for one: a file saved where you choose. Where it goes from there is up to you. Android\'s own backup to your Google account is off unless you tick Allow Android to back up my data in Settings, under Data. Ticked, Android copies the app\'s data only when it encrypts it with your screen lock, so Google can\'t read it. Unticked, Android\'s own phone-to-phone transfer leaves the data out too, though some phone makers\' transfer tools may still copy it';
 
   @override
   String get privacyBankTitle => 'Bank messages and notification access';
@@ -1052,6 +1055,23 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get privacyLock =>
       'Your fingerprint is checked by Android itself; the app never sees it';
+
+  @override
+  String get privacyRatingTitle => 'Rating the app';
+
+  @override
+  String get privacyRating =>
+      'Now and then, after you save entries, Google Play may ask you to rate the app. The app only counts saves on this phone. A rating goes to Google Play, never to the app';
+
+  @override
+  String get androidBackup => 'Allow Android to back up my data';
+
+  @override
+  String get androidBackupAbout => 'About Android backup';
+
+  @override
+  String get androidBackupInfo =>
+      'Your data remains encrypted with your screen lock, so Google can\'t read it. Set up a new Android phone with the same Google account and your old screen lock, and your data can be restored there';
 
   @override
   String get privacyOk => 'Got it';

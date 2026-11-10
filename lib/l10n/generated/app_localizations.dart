@@ -1130,6 +1130,12 @@ abstract class AppLocalizations {
   /// **'سررسید'**
   String get dueDateLabel;
 
+  /// No description provided for @dueDatePick.
+  ///
+  /// In fa, this message translates to:
+  /// **'تاریخ سررسید'**
+  String get dueDatePick;
+
   /// No description provided for @dueOn.
   ///
   /// In fa, this message translates to:
@@ -2015,7 +2021,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyData.
   ///
   /// In fa, this message translates to:
-  /// **'خرج‌ها، درآمدها، بودجه‌ها، بدهی‌ها و تنظیمات شما فقط در حافظه برنامه روی همین گوشی می‌مانند. با حذف برنامه پاک می‌شوند'**
+  /// **'خرج‌ها، درآمدها، بودجه‌ها، بدهی‌ها و تنظیمات شما فقط در حافظه برنامه روی همین گوشی می‌مانند، مگر اینکه پشتیبان اندروید را روشن کنید. با حذف برنامه پاک می‌شوند'**
   String get privacyData;
 
   /// No description provided for @privacyBackupsTitle.
@@ -2027,7 +2033,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyBackups.
   ///
   /// In fa, this message translates to:
-  /// **'پشتیبان فقط وقتی ساخته می‌شود که خودتان بخواهید: فایلی که هر جا بخواهید ذخیره می‌شود. اینکه از آنجا به کجا برود با خودتان است'**
+  /// **'پشتیبان فقط وقتی ساخته می‌شود که خودتان بخواهید: فایلی که هر جا بخواهید ذخیره می‌شود. اینکه از آنجا به کجا برود با خودتان است. پشتیبان خود اندروید در حساب گوگل شما خاموش است، مگر اینکه «اندروید از داده‌هایم پشتیبان بگیرد» را در بخش داده‌های تنظیمات تیک بزنید. تیک خورده باشد، اندروید داده‌های برنامه را فقط وقتی کپی می‌کند که آن را با قفل صفحه شما رمز کند، طوری که گوگل نتواند بخواندش. تیک نخورده باشد، انتقال گوشی به گوشی خود اندروید هم داده‌ها را نمی‌برد، هرچند ابزار انتقال بعضی سازنده‌های گوشی ممکن است باز هم کپی‌شان کنند'**
   String get privacyBackups;
 
   /// No description provided for @privacyBankTitle.
@@ -2065,6 +2071,36 @@ abstract class AppLocalizations {
   /// In fa, this message translates to:
   /// **'اثر انگشت را خود اندروید بررسی می‌کند؛ برنامه هرگز آن را نمی‌بیند'**
   String get privacyLock;
+
+  /// No description provided for @privacyRatingTitle.
+  ///
+  /// In fa, this message translates to:
+  /// **'امتیاز دادن به برنامه'**
+  String get privacyRatingTitle;
+
+  /// No description provided for @privacyRating.
+  ///
+  /// In fa, this message translates to:
+  /// **'گاهی پس از ثبت چند مورد، گوگل پلی ممکن است از شما بخواهد به برنامه امتیاز دهید. برنامه فقط تعداد ثبت‌ها را روی همین گوشی می‌شمارد. امتیاز شما به گوگل پلی می‌رود، نه به برنامه'**
+  String get privacyRating;
+
+  /// No description provided for @androidBackup.
+  ///
+  /// In fa, this message translates to:
+  /// **'اندروید از داده‌هایم پشتیبان بگیرد'**
+  String get androidBackup;
+
+  /// No description provided for @androidBackupAbout.
+  ///
+  /// In fa, this message translates to:
+  /// **'درباره پشتیبان اندروید'**
+  String get androidBackupAbout;
+
+  /// No description provided for @androidBackupInfo.
+  ///
+  /// In fa, this message translates to:
+  /// **'داده‌هایتان با قفل صفحه شما رمزشده می‌ماند و گوگل نمی‌تواند آن را بخواند. گوشی اندرویدی تازه را با همان حساب گوگل و قفل صفحه گوشی قبلی راه‌اندازی کنید تا داده‌هایتان آنجا بازگردانده شود'**
+  String get androidBackupInfo;
 
   /// No description provided for @privacyOk.
   ///

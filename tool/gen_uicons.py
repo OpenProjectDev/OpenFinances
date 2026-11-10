@@ -55,6 +55,7 @@ UI = [
     ('drag', 'bold-rounded', 'grip-lines', False),
     ('email', 'solid-rounded', 'envelope', False),
     ('backspace', 'solid-rounded', 'delete', False),
+    ('info', 'solid-rounded', 'info', False),
 ]
 
 # The category icon picker's tabs after "All" (key = ARB suffix: iconGroup<Key>).

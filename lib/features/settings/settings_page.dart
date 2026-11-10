@@ -51,6 +51,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:openfinances/shared/digits.dart';
 import 'package:openfinances/shared/ui/group_fit.dart';
 import 'package:openfinances/shared/ui/square_chip.dart';
+import 'package:openfinances/shared/ui/check_box.dart';
+import 'package:openfinances/shared/ui/tips.dart' show showTipBy;
+import 'package:openfinances/shared/ui/uicons.g.dart' show UIcons;
 import 'package:openfinances/shared/ui/privacy_sheet.dart';
 import 'package:openfinances/shared/backup_pick.dart';
 import 'package:openfinances/shared/haptics.dart';
@@ -509,8 +512,9 @@ class SettingsPage extends StatelessWidget {
                   // Tips over what can't be seen (off by default; also on
                   // the first page). Turned on, they all show again, the
                   // scrolling hints and "never show again"s too. By
-                  // it, the amount fields' "000" button (on in Persian
-                  // by default; the owner, 2026-10-26).
+                  // it, the amount fields' "000" button (on by default for
+                  // toman and rial, off for $ and €: SettingsProvider
+                  // .zerosByDefault; developer, 2026-11-10).
                   ToggleChips<String>(
                     radius: _kChipRadius,
                     on: {
@@ -617,6 +621,10 @@ class SettingsPage extends StatelessWidget {
                         doExport(full: full, excel: excel, name: name),
                     onRestore: doRestore,
                   ),
+                  // Android's own backup, to Google only end to end
+                  // encrypted; off by default (developer, 2026-11-08).
+                  // AppBackupAgent.kt reads the pref.
+                  const _AndroidBackupRow(),
                 ],
               ),
               const SizedBox(height: 12),
@@ -644,6 +652,8 @@ class SettingsPage extends StatelessWidget {
         onPressed: onTap,
         style: FilledButton.styleFrom(
           overlayColor: Colors.transparent,
+          // As tall as the section's other rows.
+          minimumSize: const Size(0, _kDataRowHeight),
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(_kChipRadius),
@@ -655,6 +665,80 @@ class SettingsPage extends StatelessWidget {
         ),
         child: GroupFit(child: InkText(text)),
       );
+}
+
+/// The Data section's rows' height: Categories and SMS formats, Backup,
+/// Restore and the Android backup row alike (developer, 2026-11-10).
+const double _kDataRowHeight = 52;
+
+/// "Allow Android to back up my data": a chip as tall as Backup and Restore,
+/// its checkbox at the start as on the first page (developer, 2026-11-10),
+/// and an info square after it whose tap shows on the tips' card that the data
+/// stays encrypted and comes back on a new phone (asked for by the developer,
+/// so not a tooltip naming a button).
+class _AndroidBackupRow extends StatelessWidget {
+  const _AndroidBackupRow();
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    final scheme = Theme.of(context).colorScheme;
+    final sp = context.watch<SettingsProvider>();
+    final on = sp.androidBackup;
+    final style = Theme.of(
+      context,
+    ).textTheme.labelLarge?.copyWith(fontSize: 15, fontWeight: FontWeight.w600);
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: Semantics(
+              checked: on,
+              child: GestureDetector(
+                onTap: () => sp.setAndroidBackup(!on),
+                child: Container(
+                  // Taller only if the words need a second line.
+                  constraints: const BoxConstraints(minHeight: _kDataRowHeight),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: context.raised,
+                    borderRadius: BorderRadius.circular(_kChipRadius),
+                  ),
+                  child: Row(
+                    children: [
+                      CheckBoxMark(
+                        on: on,
+                        color: scheme.primary,
+                        checkColor: context.textOnStrong,
+                        outline: scheme.onSurfaceVariant,
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(child: InkText(l.androidBackup, style: style)),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: _kRowGap),
+          SizedBox(
+            width: _kDataRowHeight,
+            child: Builder(
+              builder: (square) => SquareChip(
+                tooltip: l.androidBackupAbout,
+                onTap: () => showTipBy(square, l.androidBackupInfo),
+                child: Icon(UIcons.info, color: scheme.onSurfaceVariant),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 /// Something greyed out because the SMS tab is off was tapped: open Tabs &
@@ -2178,7 +2262,7 @@ class _BackupOptionsState extends State<_BackupOptions>
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 280),
         curve: Curves.easeOut,
-        constraints: const BoxConstraints(minHeight: 52),
+        constraints: const BoxConstraints(minHeight: _kDataRowHeight),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           color: bg,
@@ -2336,9 +2420,9 @@ class _AboutBox extends StatelessWidget {
   const _AboutBox();
 
   static const _email = 'hs.96@outlook.com';
-  static const _website = 'https://openfinances.openproject.website';
+  static const _website = 'https://openproject.website/openfinances/';
   static const _openProjectSite = 'https://openproject.website';
-  static const _openDesignSite = 'https://opendesign.openproject.website';
+  static const _openDesignSite = 'https://openproject.website/opendesign/';
   static const _repo = 'https://github.com/OpenProjectDev/OpenFinances';
 
   /// The "This app" part: its logo opens it.

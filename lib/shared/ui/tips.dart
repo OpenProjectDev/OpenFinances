@@ -178,6 +178,30 @@ class _TipsTriggerState extends State<TipsTrigger> {
   }
 }
 
+/// A tip asked for with a tap (an info square, [target] its context): [text]
+/// on the tips' card by it, whether tips are on or not, and never remembered.
+/// Like every tip, any touch sends it away, so a second tap on the square only
+/// closes it.
+void showTipBy(BuildContext target, String text) {
+  if (_showing != null) return; // this touch is sending that one away
+  final box = target.findRenderObject();
+  if (box is! RenderBox || !box.attached || !box.hasSize) return;
+  final at = box.localToGlobal(Offset.zero) & box.size;
+  late final OverlayEntry entry;
+  entry = OverlayEntry(
+    builder: (_) => _TipCard(
+      text: text,
+      at: [at],
+      onGone: () {
+        if (entry.mounted) entry.remove();
+        if (_showing == entry) _showing = null;
+      },
+    ),
+  );
+  _showing = entry;
+  Overlay.of(target, rootOverlay: true).insert(entry);
+}
+
 /// The tip, by [at] (where to press): over it or under it, on the side with
 /// room, a little point toward each; touches go through to the page and send it
 /// away.

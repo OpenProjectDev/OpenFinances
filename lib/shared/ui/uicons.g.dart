@@ -20,6 +20,7 @@ abstract final class UIcons {
   static const drag = IconData(0xf738, fontFamily: 'UIconsBR');
   static const email = IconData(0xf5d1, fontFamily: 'UIconsSR');
   static const backspace = IconData(0xf521, fontFamily: 'UIconsSR');
+  static const info = IconData(0xf7ff, fontFamily: 'UIconsSR');
 }
 
 /// Every Solid Rounded icon by name (the category icon picker; its

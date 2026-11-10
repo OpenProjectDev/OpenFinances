@@ -52,6 +52,7 @@ class PrivacyPolicyText extends StatelessWidget {
       (l.privacyBankTitle, l.privacyBank),
       (l.privacyUpdatesTitle, l.privacyUpdates),
       (l.privacyLockTitle, l.privacyLock),
+      (l.privacyRatingTitle, l.privacyRating),
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

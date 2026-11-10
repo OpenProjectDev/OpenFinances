@@ -274,12 +274,14 @@ class _AddEditTransactionSheet {
                   selection: TextSelection.collapsed(offset: t.length),
                 );
 
-            // Title chip: fill the title, reset the title row, and pick the
-            // category it was last used in. Never the amount (the owner,
-            // 2026-10-25: amount suggestions only had to be erased).
+            // Title chip: fill the title, reset the title row, pick the
+            // category it was last used in, and go on to the amount. Never
+            // the amount's value (the owner, 2026-10-25: amount suggestions
+            // only had to be erased).
             void pickTitle(String t) {
               setText(titleCtrl, t);
               titleQuery.value = '';
+              amountNode.requestFocus();
               final cat = sugg.categoryFor(t);
               final knownCat =
                   cat != null &&
