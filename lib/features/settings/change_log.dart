@@ -7,6 +7,15 @@ typedef ChangeLogEntry = ({String version, String date, List<String> changes});
 
 const List<ChangeLogEntry> kChangeLog = [
   (
+    version: '1.0.17+21',
+    date: '2026-11-11',
+    changes: [
+      'Text sits right in the middle of buttons, chips and tabs, Persian '
+          'most of all',
+      'Typing in a long form with the keyboard up no longer makes it jump',
+    ],
+  ),
+  (
     version: '1.0.16+20',
     date: '2026-11-10',
     changes: [

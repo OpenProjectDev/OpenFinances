@@ -148,14 +148,31 @@ class _RenderKeyboardLift extends RenderShiftedBox {
       return;
     }
 
-    // Child's height with the full constraints. When only the inset moved,
-    // reuse the last measurement instead of laying the child out again.
+    // Child's natural height. When only the inset moved, reuse the last
+    // measurement instead of laying the child out again.
     final reuse =
         _onlyInsetChanged && _naturalFor == c && _naturalHeight != null;
     _onlyInsetChanged = false;
     if (!reuse) {
-      child.layout(c, parentUsesSize: true);
-      _naturalHeight = child.size.height;
+      if (_inset > 0 && c.hasBoundedHeight) {
+        // With the keyboard up, measured in the room above it: shorter than
+        // the room, that's its height (it fits); filling it, it doesn't fit.
+        // Measured at full height, a scrolled form's viewport grew for that
+        // pass and its scroll position was clamped, so it jumped up and
+        // slid back on every letter typed (found by OpenTracker in the code
+        // it took from here, 2026-11-10; test/keyboard_inset_test.dart).
+        final room = math.max(0.0, c.maxHeight - _inset);
+        child.layout(
+          c.copyWith(minHeight: math.min(c.minHeight, room), maxHeight: room),
+          parentUsesSize: true,
+        );
+        _naturalHeight = child.size.height < room - .5
+            ? child.size.height
+            : c.maxHeight;
+      } else {
+        child.layout(c, parentUsesSize: true);
+        _naturalHeight = child.size.height;
+      }
       _naturalFor = c;
     }
 

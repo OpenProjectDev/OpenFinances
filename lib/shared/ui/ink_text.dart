@@ -7,8 +7,8 @@
 // its own way. So every font in use is measured once, character by
 // character (each Persian letter in each of its joined forms), and a text
 // is moved so its script's band sits in the middle: Latin letters and
-// digits from the line up to a capital's top, Persian letters from halfway
-// down a «ر»'s tail up to an «ا»'s top (both, in a text with both). The
+// digits from the line up to a capital's top, Persian letters from the
+// bottom of a «ر»'s tail up to an «ا»'s top (both, in a text with both). The
 // band is the font's, not the text's: every word in one font and size sits
 // on one line
 // (the owner, 2026-10-26: by each word's own ink, "Budget", its «g»
@@ -204,7 +204,7 @@ class InkMetrics extends ChangeNotifier {
 
   /// The band (top, bottom; ems above the baseline) of the scripts in
   /// [runes]: Latin letters and digits from the baseline to «H»'s top,
-  /// Persian digits to «۱»'s, Persian letters from halfway down «ر»'s
+  /// Persian digits to «۱»'s, Persian letters from the bottom of «ر»'s
   /// tail to «ا»'s top; several: all of them. Null: no letter or digit (or the font lacks
   /// the measuring letters).
   static (double, double)? _band(List<int> runes, Map<String, _Glyph> font) {
@@ -231,9 +231,10 @@ class InkMetrics extends ChangeNotifier {
 
     if (latin) take('H', null);
     if (faDigit) take('۱', null);
-    // The tails below the line are thin strokes: half of theirs counts
-    // (all of it left the letters' bodies sitting high).
-    if (fa) take('ا', (font['ر']?.bottom ?? 0) / 2);
+    // All of the tail counts. (Half of it was tuned while the line's middle
+    // was measured wrong, [_lineMiddle]; with that fixed, the whole of it
+    // centers Persian words, as test/ink_center_test.dart checks.)
+    if (fa) take('ا', font['ر']?.bottom ?? 0);
     final t = top, b = bottom;
     return t == null || b == null ? null : (t, b);
   }
@@ -316,11 +317,20 @@ class InkMetrics extends ChangeNotifier {
       textScaler: scaler,
       strutStyle: strut,
     )..layout();
+    // The first line's middle from where the baseline really is. Not from
+    // the line's ascent and descent: under a strut those are still its
+    // letters' fonts' (Shabnam's for a Persian word), while the strut's font
+    // (the first in the list, a digit font) places the baseline. Persian sat
+    // low with ManropeNum first, Latin high with VazirNum first (found by
+    // OpenTracker in the code it took from here; developer, 2026-11-11).
     final lines = tp.computeLineMetrics();
+    final height = tp.height;
+    final baseline = tp.computeDistanceToActualBaseline(
+      TextBaseline.alphabetic,
+    );
     tp.dispose();
     if (lines.isEmpty) return 0;
-    final l = lines.first;
-    return (l.descent - l.ascent) / 2;
+    return height / lines.length / 2 - baseline;
   }
 
   /// Draws every sample character once, in a grid on one picture, and
